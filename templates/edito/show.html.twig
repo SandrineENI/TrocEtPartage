@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ edito.titre }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+
+        <h1 class="mb-3">{{ edito.titre }}</h1>
+
+        {# --- Photo principale --- #}
+        {% if edito.photoPrincipale %}
+            <div class="text-center mb-4">
+                <img
+                        src="{{ asset('edito/' ~ edito.photoPrincipale) }}"
+                        alt="Photo principale de {{ edito.titre }}"
+                        class="img-fluid rounded shadow"
+                        style="max-height: 400px; object-fit: cover; cursor: pointer;"
+                        id="main-photo"
+                >
+            </div>
+        {% endif %}
+
+        {# --- Contenu de l’édito --- #}
+        {% if edito.contenu %}
+            <div class="mb-5">
+                <p>{{ edito.contenu|nl2br }}</p>
+            </div>
+        {% endif %}
+
+        {# --- Galerie associée --- #}
+        {% if edito.images is not empty %}
+            <h3 class="mb-3">Galerie associée</h3>
+            <div class="row g-3">
+                {% for image in edito.images %}
+                    <div class="col-6 col-md-3">
+                        <img
+                                src="{{ asset('edito/' ~ image.fichier) }}"
+                                alt="{{ image.legende ?: 'Photo' }}"
+                                class="img-fluid rounded shadow-sm gallery-image"
+                                data-full="{{ asset('edito/' ~ image.fichier) }}"
+                                style="cursor:pointer; height:180px; object-fit:cover;"
+                        >
+                        {% if image.legende %}
+                            <p class="text-center small mt-1">{{ image.legende }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted mt-3">Aucune photo associée à cet édito.</p>
+        {% endif %}
+
+        <div class="mt-5">
+            <a href="{{ path('edito_new') }}" class="btn btn-success">Créer un nouvel édito</a>
+            <a href="{{ path('app_main') }}" class="btn btn-secondary">Retour à l’accueil</a>
+        </div>
+    </div>
+
+    {# --- Lightbox modale simple (sans librairie) --- #}
+    <style>
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #000;
+        }
+        #lightbox.close-area {
+            cursor: pointer;
+        }
+    </style>
+
+    <div id="lightbox" class="close-area">
+        <img id="lightbox-image" src="" alt="">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+
+            // Quand on clique sur une image de la galerie
+            document.querySelectorAll('.gallery-image, #main-photo').forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImage.src = img.dataset.full || img.src;
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            // Fermer la lightbox en cliquant n'importe où
+            lightbox.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+                lightboxImage.src = '';
+            });
+        });
+    </script>
+{% endblock %}

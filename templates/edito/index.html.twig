@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les éditos{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Les éditos</h1>
+
+        {% if editos is empty %}
+            <p class="text-center text-muted">Aucune actualité pour le moment.</p>
+        {% else %}
+            <div class="row g-4">
+                {% for edito in editos %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card shadow-sm h-100 border-0">
+                            {% if edito.photoPrincipale %}
+                                <a href="{{ path('edito_show', {'id': edito.id}) }}">
+                                    <img src="{{ asset('edito/' ~ edito.photoPrincipale) }}"
+                                         alt="Photo de {{ edito.titre }}"
+                                         class="card-img-top"
+                                         style="height: 220px; object-fit: cover;">
+                                </a>
+                            {% else %}
+                                <div class="bg-light d-flex align-items-center justify-content-center"
+                                     style="height: 220px;">
+                                    <span class="text-muted">Pas d'image</span>
+                                </div>
+                            {% endif %}
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ edito.titre }}</h5>
+                                {% if edito.contenu %}
+                                    <p class="card-text text-muted">
+                                        {{ edito.contenu|striptags|slice(0, 120) ~ (edito.contenu|length > 120 ? '…' : '') }}
+                                    </p>
+                                {% endif %}
+                                <div class="mt-auto">
+                                    <a href="{{ path('edito_show', {'id': edito.id}) }}" class="btn btn-primary w-100">
+                                        Lire la suite
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="text-center mt-5">
+            <a href="{{ path('edito_new') }}" class="btn btn-success">
+                ➕ Créer un nouvel édito
+            </a>
+        </div>
+    </div>
+{% endblock %}

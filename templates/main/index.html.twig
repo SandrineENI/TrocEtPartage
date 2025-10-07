@@ -1,0 +1,227 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Troc & Partage | Accueil{% endblock %}
+{% block stylesheets %}
+
+
+{% endblock %}
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <div class="container-fluid clearfix">
+         {% if 'iPhone' in app.request.headers.get('User-Agent')
+            or 'iPod' in app.request.headers.get('User-Agent')
+            or 'Android' in app.request.headers.get('User-Agent')
+            or 'BlackBerry' in app.request.headers.get('User-Agent') %}
+            <div class="">
+                <h1 class="text3Rem ">Bienvenue !</h1>
+                <p class="text3Rem fst-italic enRouge">(Site en construction)</p>
+                {# **********CAROUSEL SLIDERS DEBUT **************** #}
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval=4000>
+
+                    <div class="carousel-inner">
+                        {% for slider in sliders %}
+                            <p> </p> {# Paragraphe vide pour affichage pas collé au Head #}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <img src="{{ asset('images/Sliders/' ~ slider.imageurl) }}" height="400" class="d-block w-100" alt="slider.titre">
+                                <div class="carousel-caption d-none d-md-block pb-0">
+                                    {# <h5>{{ slider.titre }}</h5>
+                                        <p>{{ slider.description }}</p> #}
+                                    {% if slider.lien %}
+
+                                        <a href="{{ slider.lien }}" class="btn btnBleu btnSliderDesk">{{ slider.boutontext }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+
+                        {% endfor %}
+                    </div>
+                </div>
+                {# **********CAROUSEL SLIDERS FIN **************** #}
+                {# **********ACTUALITÉS DEBUT **************** #}
+                <div class="text-center mt-3">
+                    <h2 class="fw-bolder text3Rem">Actualités</h2>
+                    {% if editos is empty %}
+                        <p class="text-center text-muted">Aucune actualité pour le moment.</p>
+                    {% else %}
+                        <div class="row g-4">
+                            {%  for edito in editos %}
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="card shadow-sm h-100 border-0">
+                                        {% if edito.photoPrincipale %}
+                                            <a href="{{ path('edito_show', {'id': edito.id}) }}">
+                                                <img src="{{ asset('edito/' ~ edito.photoPrincipale) }}"
+                                                     alt="Photo de {{ edito.titre }}"
+                                                     class="card-img-top"
+                                                     style="height: 220px; object-fit: cover;">
+                                            </a>
+                                        {% else %}
+                                            <div class="bg-light d-flex align-items-center justify-content-center"
+                                                 style="height: 220px;">
+                                                <span class="text-muted">Pas d'image</span>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title">{{ edito.titre }}</h5>
+                                            {% if edito.contenu %}
+                                                <p class="card-text text-muted">
+                                                    {{ edito.contenu|striptags|slice(0, 120) ~ (edito.contenu|length > 120 ? '…' : '') }}
+                                                </p>
+                                            {% endif %}
+                                            <div class="mt-auto">
+                                                <a href="{{ path('edito_show', {'id': edito.id}) }}" class="btn btn-primary w-100">
+                                                    Lire la suite
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                {# **********ACTUALITÉS FIN **************** #}
+                {# <a href='{{ path('app_slider_index') }}' ><img src='https://i.postimg.cc/7fj0mBck/slider3.jpg' border='0' alt='slider3'/></a> #}
+
+                <div class="row">
+                    <div class="text-center mt-3">
+                        {% set photoObjet = asset('images/base/Troc_objet.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="30%"  class="img-fluid " alt="Menu Troc Objet">
+                        {% set photoObjet = asset('images/base/Troc_Service.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="30%"  class="img-fluid " alt="Menu Troc Service">
+                        {% set photoObjet = asset('images/base/Troc_Savoir.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="30%"  class="img-fluid " alt="lMenu Troc Savoir">
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div id="desktopMain" class="row justify-content-md-center">
+                <h1 class="text3Rem ">Bienvenue !</h1>
+                <p class="text2Rem fst-italic enRouge">(Site en construction)</p>
+                {# **********CAROUSEL SLIDERS DEBUT **************** #}
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval=8000>
+
+                    <div class="carousel-inner">
+                        {% for slider in sliders %}
+                            <p> </p> {# Paragraphe vide pour affichage pas collé au Head #}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <img src="{{ asset('images/Sliders/' ~ slider.imageurl) }}" height="400" class="d-block w-100" alt="slider.titre">
+                                <div class="carousel-caption d-none d-md-block pb-0">
+                                    {# <h5>{{ slider.titre }}</h5>
+                                        <p>{{ slider.description }}</p> #}
+                                    {% if slider.lien %}
+
+                                        <a href="{{ slider.lien }}" class="btn btnBleu btnSliderDesk">{{ slider.boutontext }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+
+                        {% endfor %}
+                    </div>
+                </div>
+                {# **********CAROUSEL SLIDERS FIN **************** #}
+                {# **********ACTUALITÉS DEBUT **************** #}
+                <div class="text-center mt-3">
+                    <h2 class="fw-bolder text3Rem">Actualités</h2>
+                    {% if editos is empty %}
+                        <p class="text-center text-muted">Aucune actualité pour le moment.</p>
+                    {% else %}
+                        <div class="row g-4">
+                            {%  for edito in editos %}
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="card shadow-sm h-100 border-0">
+                                        {% if edito.photoPrincipale %}
+                                            <a href="{{ path('edito_show', {'id': edito.id}) }}">
+                                                <img src="{{ asset('edito/' ~ edito.photoPrincipale) }}"
+                                                     alt="Photo de {{ edito.titre }}"
+                                                     class="card-img-top"
+                                                     style="height: 220px; object-fit: cover;">
+                                            </a>
+                                        {% else %}
+                                            <div class="bg-light d-flex align-items-center justify-content-center"
+                                                 style="height: 220px;">
+                                                <span class="text-muted">Pas d'image</span>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title">{{ edito.titre }}</h5>
+                                            {% if edito.contenu %}
+                                                <p class="card-text text-muted">
+                                                    {{ edito.contenu|striptags|slice(0, 120) ~ (edito.contenu|length > 120 ? '…' : '') }}
+                                                </p>
+                                            {% endif %}
+                                            <div class="mt-auto">
+                                                <a href="{{ path('edito_show', {'id': edito.id}) }}" class="btn btn-primary w-100">
+                                                    Lire la suite
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                {# **********ACTUALITÉS FIN **************** #}
+                <div class="row">
+                    <div class="col-md-4 text-center mt-3">
+                        {% set photoObjet = asset('images/base/Troc_objet.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="80%"  class="img-fluid " alt="logo marieva.fr">
+                    </div>
+                    <div class="col-md-4 text-center mt-3">
+                        {% set photoObjet = asset('images/base/Troc_Service.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="80%"  class="img-fluid " alt="Menu Troc Service">
+                    </div>
+                    <div class="col-md-4 text-center mt-3">
+                        {% set photoObjet = asset('images/base/Troc_Savoir.png') %}
+                        <img id="logo" src="{{ photoObjet }}" width="80%"  class="img-fluid " alt="lMenu Troc Savoir">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-center mt-3">
+                        <h2 class="fw-bolder">  </h2>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const liens = document.querySelectorAll('.lire-suite');
+
+            liens.forEach(function(lien, index) {
+                lien.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const contenuCourt = lien.closest('.contenu-edito');
+                    const contenuComplet = contenuCourt.nextElementSibling;
+
+                    contenuCourt.innerHTML = contenuComplet.innerHTML;
+                });
+            });
+        });
+    </script>
+
+
+{% endblock %}

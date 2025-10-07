@@ -1,0 +1,421 @@
+@font-face {
+    font-family: 'Averiar';
+    src: url('../fonts/Averia-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'MelodBold';
+    src: url('../fonts/melodbo_.ttf') format('truetype');
+}
+.enRouge{
+    color: #d60a66;
+}
+.enVert{
+    color: #9eceb8;
+}
+.enJaune{
+    color: #faf7b9;
+}
+.enMauve{
+    color: #bf92cf;
+}
+.enOrange{
+    color: #f9a382;
+}
+.enRose{
+    color: #d77eb0;
+}
+.enGris{
+    color: #686161;
+}
+.enBleu{
+    color: #285967;
+}
+#bodyToo{
+    font-family: 'averiar';
+    background-color: #faf7b9;
+    color: #285967;
+    margin-left: 1%;
+    margin-right: 1%;
+
+    background-size: cover; /* Fait en sorte que l'image couvre toute la zone */
+    background-position: top; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition */
+    background-attachment: fixed; /* (Optionnel) Fixe l'image pour qu'elle ne bouge pas au scroll */
+}
+
+nav, body , footer{
+    margin: 0;
+    padding: 0;
+   background-color: #44bdbd !important;
+
+    color: #285967;
+    font-family: 'MelodBold';
+}
+footer {
+    text-align: center;
+
+}
+.lien_classique{
+    color: #056ecc;
+
+}
+.lien_classique:hover{
+    color: #021d39;
+   background-color: #b1df8f;
+
+
+}
+.dark{
+    background-color: #021d39;
+}
+.darkText{
+    color: #fdfde2;
+}
+.light{
+    background-color: #8cbdf4;
+}
+.lightText{
+    color: #033463;
+}
+.tresGros{
+    font-size: 4rem;
+
+}
+.carteGeo{
+    border: solid 3px #033463;
+}
+
+.leaflet-popup-content {
+    text-align: center;
+}
+.text0_8Rem{
+    font-size: 0.8rem!important;
+}
+.text1Rem{
+    font-size: 1rem!important;
+}
+.text1_5Rem{
+    font-size: 1.5rem!important;
+}
+.text2Rem{
+    font-size: 2rem!important;
+}
+.text2_5Rem{
+    font-size: 2.5rem!important;
+}
+.text3Rem{
+    font-size: 3rem!important;
+}
+.text4Rem{
+    font-size: 4rem!important;
+}
+#titre h4, .logo img {
+    display: flex;
+    align-items: center ; /* Alignement vertical */
+    justify-content: center ; /* Alignement horizontal */
+    height: 100%; /* Assurez-vous que le conteneur a une hauteur définie */
+    text-align: center; /* Assure l'alignement du texte */
+    line-height: 0.9;
+    font-family: 'MelodBold';
+}
+#titre2 {
+   /* height: 100px; /* ou ce que tu veux, mais pas auto */
+}
+
+#titre2 h4 {
+    text-align: center; /* Assure l'alignement du texte */
+    font-family: 'MelodBold';
+}
+.h4Mob{
+    font-size: 6rem;
+}
+.h4Desk{
+    font-size: 3rem;
+}
+
+h6,h1,p{
+    font-family: 'Averiar';
+    text-align: center;
+}
+.pStart{
+    font-family: 'Averiar';
+    text-align:start;
+}
+
+/* Menu container */
+.custom-menu,.custom-menu2 {
+    text-align: center;
+    font-family: 'Averiar';
+    margin: 20px auto;
+    padding: 0;
+}
+
+.custom-menu ul,.custom-menu2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Espacement entre les boutons */
+}
+.custom-menu li, .custom-menu2 ul {
+    margin: 0;
+}
+
+
+.custom-menu a {
+    display: inline-block;
+    padding: 2px 10px;
+    text-decoration: none;
+    font-family: 'Cinzelm';
+    font-weight: bold;
+    color: #033463; /* Couleur du texte */
+    background-color: #fdfde2; /* Fond des boutons */
+    border: 2px solid #033463; /* Bordure des boutons */
+    border-radius: 8px; /* Coins arrondis */
+    transition: all 0.3s ease; /* Transition pour les effets */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.custom-menu2 a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Cinzelm';
+    font-weight: bold;
+    width: 600px;
+    color: #033463; /* Couleur du texte */
+    background-color: #fdfde2; /* Fond des boutons */
+    border: 2px solid #555; /* Bordure des boutons */
+    border-radius: 8px; /* Coins arrondis */
+    transition: all 0.3s ease; /* Transition pour les effets */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+/* Effet d'encadrement personnalisé */
+.custom-menu a::before,.custom-menu2 a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #033463, #2575fc);
+    z-index: -1;
+    transition: transform 0.3s ease;
+    transform: scale(0);
+    transform-origin: center;
+    border-radius: 8px;
+}
+
+/* Survol */
+.custom-menu a:hover,.custom-menu2 a:hover  {
+    color: #fdfde2; /* Couleur du texte sur survol */
+    border-color: transparent;
+}
+
+.custom-menu a:hover::before, .custom-menu2 a:hover::before {
+    transform: scale(1); /* L'arrière-plan couvre tout le bouton */
+}
+
+/* Effet focus (accessibilité) */
+.custom-menu a:focus, .custom-menu2 a:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Gestion du Menu burger */
+.menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #444;
+    border-radius: 8px;
+    padding: 10px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 10px 0;
+}
+
+.menu ul li a {
+    color: #fdfde2;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+/* Fin Ajout menu burger */
+
+.alert-danger{
+    font-size: 1.8rem;
+    color: #b51c1c !important;
+    border-color: #b51c1c !important;
+
+
+}
+.text-rouge{
+    color: #b51c1c !important;
+    border-color: #b51c1c !important;
+
+
+}
+
+.table-striped thead tr th {
+    background-color: #033463;
+    color: #fdfde2;
+}
+
+.text-rose, .text-rosebis{
+    color: #ea09ea;
+}
+.text-rose:hover{
+    color: #fdfde2;
+    background-color: #ea09ea;
+}
+
+.text-bleu, .text-bleubis{
+    color: #0e70ef;
+}
+.text-bleu:hover{
+    color: #fdfde2;
+    background-color: #0e70ef;
+}
+
+.text-turquoise{
+    color: #19b1b1;
+}
+
+.text-gris{
+    text-decoration: line-through ;
+    color: #494747 !important;
+}
+.text-alerte{
+    background-color: #b51c1c;
+    color: #fdfde2;
+}
+
+/* Gestion des infobulles */
+.conteneur, .conteneurMenu {
+    position: relative;
+    overflow: visible;
+}
+
+
+.conteneur .infobulle {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    width: 200px;
+    height: 80px;
+    border-radius: 20px;
+    border: 3px solid;
+    border-color:  #033463 ;
+    background-color: #fdfde2;
+    color: #033463;
+    opacity: 0;
+    -webkit-transform: rotate(360deg) scale(0);
+    transform: rotate(360deg) scale(0);
+    visibility: hidden;
+    transition: all ease 1s;
+}
+.conteneurMenu .infobulleMenu{
+    position: absolute;
+    top: 40px;
+
+    width: 150px;
+    height: 40px;
+    color: #033463;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease 1s;
+ }
+
+.infobulleMenu a{
+    display: inline-block;
+    padding: 2px 10px;
+    text-decoration: none;
+    font-family: 'Averiar';
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    color: #033463; /* Couleur du texte */
+    background-color: #fdfde2; /* Fond des boutons */
+    border: 2px solid #033463; /* Bordure des boutons */
+    border-radius: 8px; /* Coins arrondis */
+    transition: all 0.3s ease; /* Transition pour les effets */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+.conteneur:hover .infobulle {
+    opacity: 1;
+    visibility: visible;
+    z-index: 999;
+    -webkit-transform: rotate(0deg)  scale(1);
+    transform: rotate(0deg)  scale(1);
+    transition: all ease 1;
+}
+.conteneurMenu:hover .infobulleMenu {
+    opacity: 1;
+    visibility: visible;
+    z-index: 999;
+    transition: all ease 1;
+}
+/* Fin Gestion des infobulles */
+
+.badge {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.5em;
+    font-size: 0.8em;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
+
+@media screen and (max-width: 1420px) {
+
+   #titre h4{
+        font-size: 4rem;!important;
+    }
+
+}
+@media screen and (max-width: 1080px) and (min-width: 576px) {
+
+    #titre h4{
+        font-size: 4rem;!important;
+    }
+
+}
+@media screen and (max-width: 740px) and (min-width: 576px) {
+
+    #titre h4{
+        font-size: 1.5rem;!important;
+    }
+
+}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions Générales d’Utilisation - marieva.fr{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto max-w-3xl p-6">
+        <h1 class="text-2xl font-bold mb-4">Conditions Générales d’Utilisation (CGU)</h1>
+
+        <h2 class="text-xl font-semibold mt-4">1. Objet</h2>
+        <p class="pStart">Les présentes CGU définissent les modalités d’utilisation du site <strong>marieva.fr</strong>, forum et plateforme de mise en relation.</p>
+
+        <h2 class="text-xl font-semibold mt-4">2. Éditeur</h2>
+        <p class="pStart">Le site est édité par un particulier (ci-après dénommé « l’Éditeur »). Contact : <a href="mailto:sandrine.web@orange.fr" class="text-blue-600 hover:underline">sandrine.web@orange.fr</a></p>
+
+        <h2 class="text-xl font-semibold mt-4">3. Accès au site</h2>
+        <ul class="list-disc ml-6">
+            <li>Accès gratuit.</li>
+            <li>Visiteurs : accès aux prières, sorties et forum.</li>
+            <li>Membres inscrits : possibilité de proposer des sorties, participer au forum, demander des prières et utiliser la messagerie interne.</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold mt-4">4. Inscription</h2>
+        <p class="pStart">L’inscription est réservée aux personnes majeures, résidant en France (métropole et DOM-TOM). Un email de confirmation est requis.</p>
+
+        <h2 class="text-xl font-semibold mt-4">5. Modération</h2>
+        <p class="pStart">Les contenus peuvent être modérés. L’Éditeur se réserve le droit de supprimer tout contenu inapproprié.</p>
+
+        <h2 class="text-xl font-semibold mt-4">6. Règles de conduite</h2>
+        <p class="pStart">Respect, charité chrétienne, interdiction de propos haineux, discriminatoires, obscènes, ou de tentative de piratage.</p>
+
+        <h2 class="text-xl font-semibold mt-4">7. Responsabilités</h2>
+        <ul class="list-disc ml-6">
+            <li>L’Éditeur n’est pas responsable du contenu publié par les utilisateurs.</li>
+            <li>Chaque utilisateur est responsable de ses propres publications.</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold mt-4">8. Données personnelles</h2>
+        <p class="pStart">Voir la <a href="{{ path('politique_confidentialite') }}" class="text-blue-600 hover:underline">Politique de Confidentialité</a>.</p>
+
+        <h2 class="text-xl font-semibold mt-4">9. Droit applicable</h2>
+        <p class="pStart">Les présentes CGU sont régies par le droit français. Les tribunaux compétents sont ceux du ressort du domicile de l’Éditeur.</p>
+    </div>
+{% endblock %}

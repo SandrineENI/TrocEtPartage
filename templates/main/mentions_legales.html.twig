@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales - marieva.fr{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto max-w-3xl p-6">
+        <h1 class="text-2xl font-bold mb-4">Mentions légales</h1>
+
+        <h2 class="text-xl font-semibold mt-4">1. Éditeur du site</h2>
+        <p class="pStart">
+            Le site <strong>marieva.fr</strong> est édité par un particulier (ci-après dénommé « l’Éditeur »).<br>
+            Conformément à la loi n°2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN),
+            l’Éditeur a choisi de ne pas rendre publique son identité.<br>
+            Ses coordonnées sont conservées par l’hébergeur et pourront être transmises aux autorités compétentes
+            en cas de réquisition judiciaire.<br>
+            📧 Contact : <a href="mailto:sandrine.web@orange.fr" class="text-blue-600 hover:underline">sandrine.web@orange.fr</a>
+        </p>
+
+        <h2 class="text-xl font-semibold mt-4">2. Hébergeur du site</h2>
+        <p class="pStart">
+            <strong>o2switch</strong><br>
+            SAS au capital de 100 000 €<br>
+            RCS Clermont-Ferrand B 510 909 807<br>
+            224 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br>
+            📧 contact@o2switch.fr — 📞 04 44 44 60 40
+        </p>
+
+        <h2 class="text-xl font-semibold mt-4">3. Conditions d’utilisation</h2>
+        <p class="pStart">
+            L’utilisation du site est régie par les <a href="{{ path('cgu') }}" class="text-blue-600 hover:underline">Conditions Générales d’Utilisation</a>
+            et la <a href="{{ path('politique_confidentialite') }}" class="text-blue-600 hover:underline">Politique de Confidentialité</a>.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-4">4. Propriété intellectuelle</h2>
+        <p class="pStart">
+            Le site et ses contenus (textes, images, code source, logo) sont protégés par le droit d’auteur.<br>
+            Toute reproduction sans autorisation est interdite.<br>
+            Les contenus publiés par les utilisateurs (forum, prières, sorties) restent leur propriété,
+            mais peuvent être affichés sur le site dans le cadre de son fonctionnement.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-4">5. Responsabilités</h2>
+        <p class="pStart">
+            L’Éditeur n’est pas responsable du contenu publié par les utilisateurs.<br>
+            Les utilisateurs sont seuls responsables de leurs publications et doivent respecter la législation en vigueur.<br>
+            L’Éditeur ne saurait être tenu responsable en cas d’indisponibilité du Site.
+        </p>
+    </div>
+{% endblock %}

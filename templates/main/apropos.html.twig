@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | A propos{% endblock %}
+
+{% block body %}
+    {% if 'iPhone' in app.request.headers.get('User-Agent')
+        or 'iPod' in app.request.headers.get('User-Agent')
+        or 'Android' in app.request.headers.get('User-Agent')
+        or 'BlackBerry' in app.request.headers.get('User-Agent') %}
+        <h1 class="lienContainer text-center text3Rem py-4">A propos</h1>
+        <p class="card-text text2Rem  mt-3">
+            Mariéva.fr a pour vocation de favoriser le dialogue et les rencontres entre personnes catholiques ou non, mais partageant des valeurs communes pour les aider à :
+        </p>
+        <p class=" test-start text2Rem mt-3">
+            <br>• briser l’isolement
+            <br>• favoriser l’entraide et la charité
+            <br>• partager des activités amicales et fraternelles <br>dans le respect des valeurs chrétiennes
+            <br>• Mieux faire connaître l’Eglise Catholique <br>auprès des nouveaux convertis
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+            Ce site se veut un outil pour retrouver un peu <br>l'ambiance des premiers chrétiens,
+            qui <br>se rencontraient, se recevaient, s'entraidaient, <br>prenaient soin des uns et des autres<br>
+            et allaient écouter ensemble les apôtres, ou leurs disciples, <br>qui leur enseignaient la Bonne Nouvelle.<br>
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+            Ouvert à tous, catholiques, chrétiens,
+            <br>athées ou de toute autre croyance,<br>
+            Une seule chose vous est demandée :
+            <br><b>Être charitable et respectueux
+                <br>les uns avec les autres</b>
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+            Proposez des <a class="" href="{{ path('app_sortie_index') }}">sorties</a>, inscrivez-vous à celles des autres, rencontrez-vous, en solo, entre amis, en famille.
+            <br> Vous avez le choix :
+            <br>Assister à une messe ou à une conférence,
+            <br>Aller au cinéma, Prier ensemble,
+            <br>Faire une balade, Boire un verre, etc.
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+            Exprimez-vous par écrit :
+            <br>Témoignez, discutez,
+            <br>découvrez ou faites découvrir la vie des Saints,
+            <br>demandez de l'aide, offrez la vôtre
+            <br>dans le <a class="" href="{{ path('app_forum_index') }}"> Forum de discussion</a>.
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+            Dans la rubrique <a class="" href="{{ path('app_priere_index') }}">Coin Prières</a>, vous trouverez
+            <br>les prières indispensables à la pratique de la Foi
+            <br> et bien d'autres...
+            <br> Vous pouvez aussi demander des prières
+            <br> pour vous ou pour quiconque
+            <br> grâce aux chaînes de prières.
+        </p>
+
+        <p class="card-text text2Rem mt-3"><br>
+            Comme le demande Notre Seigneur Jésus Christ :
+            <br><b>"Aimez-vous les uns les autres;
+            <br> comme je vous ai aimés, vous aussi,
+            <br>aimez-vous les uns les autres.
+            <br> (Jean 13:34)</b>
+        </p>
+        <p class="card-text text2Rem mt-3"><br>
+
+        </p>
+    {% else %}
+        <h1 class="algerian lienContainer text-center py-4">A propos</h1>
+
+        <p class="card-text test-start  mt-3">
+            Mariéva.fr a pour vocation de favoriser le dialogue et les rencontres entre personnes catholiques ou non, mais partageant des valeurs communes pour les aider à :
+        </p>
+        <p class=" test-start  mt-3">
+            <br>• briser l’isolement
+            <br>• favoriser l’entraide et la charité
+            <br>• partager des activités amicales et fraternelles dans le respect des valeurs chrétiennes
+            <br>• Mieux faire connaître l’Eglise Catholique auprès des nouveaux convertis
+        </p>
+        <p class="card-text  mt-3"><br>
+            Ce site se veut un outil pour retrouver un peu l'ambiance des premiers chrétiens,<br>
+            qui se rencontraient, se recevaient, s'entraidaient, prenaient soin des uns et des autres,<br>
+            et allaient écouter ensemble les apôtres ou leurs disciples qui leur enseignaient la Bonne Nouvelle.<br>
+        </p>
+        <p class="card-text  mt-3"><br>
+            Ouvert à tous, catholiques, chrétiens, athées ou de toute autre croyance,<br>
+            Une seule chose vous est demandée :
+            <br><b>Être charitable et respectueux
+                les uns avec les autres</b>
+        </p>
+        <p class="card-text  mt-3"><br>
+            Proposez des <a class="" href="{{ path('app_sortie_index') }}">sorties</a>, inscrivez-vous à celles des autres, rencontrez-vous, en solo, entre amis, en famille.
+            <br> Vous avez le choix :
+            Assister à une messe ou à une conférence,
+            Aller au cinéma, Prier ensemble,
+            Faire une balade, Boire un verre, etc.
+        </p>
+        <p class="card-text  mt-3"><br>
+            Exprimez-vous par écrit :
+            Témoignez, discutez,
+            découvrez ou faites découvrir la vie des Saints,
+            demandez de l'aide, offrez la vôtre
+            dans le <a class="" href="{{ path('app_forum_index') }}"> Forum de discussion</a>.
+        </p>
+        <p class="card-text  mt-3"><br>
+            Dans la rubrique <a class="" href="{{ path('app_priere_index') }}">Coin Prières</a>, vous trouverez
+            les prières indispensables à la pratique de la Foi
+            et bien d'autres...
+            <br> Vous pouvez aussi demander des prières
+             pour vous ou pour quiconque
+             grâce aux chaînes de prières.
+        </p>
+
+        <p class="card-text  mt-3"><br>
+            Comme le demandait Notre Seigneur Jésus Christ :
+            <br><b> "Aimez-vous les uns les autres; comme je vous ai aimés, vous aussi, aimez-vous les uns les autres."
+                (Jean 13:34)</b>
+        </p>
+        <p class="card-text  mt-3"><br>
+
+        </p>
+    {% endif %}
+
+{% endblock %}

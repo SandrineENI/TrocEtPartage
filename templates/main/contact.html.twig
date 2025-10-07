@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutons.css') }}">
+{% endblock %}
+{% block title %}{{ parent() }} | Contact{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1 class="lienContainer text-center py-4">Vous pouvez nous contacter <br>en remplissant le formulaire suivant : </h1>
+    </div>
+
+<div class="container-fluid">
+    <form action="{{ path('app_contact') }}" method="post">
+        <div class="row justify-content-md-center">
+            {% if 'iPhone' in app.request.headers.get('User-Agent')
+                or 'iPod' in app.request.headers.get('User-Agent')
+                or 'Android' in app.request.headers.get('User-Agent')
+                or 'BlackBerry' in app.request.headers.get('User-Agent') %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text width100 text3Rem" >Votre nom :</span>
+                    {# <input type="text" id="name" name="name" class="form-control width90 text3Rem" required> #}
+                    <input class="form-control width90 text3Rem" type="text" name="name" value="{{ formData.name ?? '' }}" placeholder="Votre nom" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width100 text3Rem" >Votre adresse email :</span>
+                    <input type="email" id="email" name="email" class="form-control text3Rem" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width100 text3Rem" >Sujet de votre message :</span>
+                    <input type="text" id="subject" name="subject" class="form-control text3Rem" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width100 text3Rem" >Votre message :</span>
+                    <textarea id="message" name="message" rows="6" class="form-control text3Rem" required></textarea>
+                </div>
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+                <button type="submit" class="btn btnBleu  text3Rem">Envoyer</button>
+            {% else %}
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Votre nom :</span>
+                        <input type="text" name="name" class="form-control" value="{{ formData.name ?? '' }}" placeholder="Ex. : Dupond ou Albert" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Votre adresse email :</span>
+                        <input type="email" name="email" value="{{ formData.email ?? '' }}" placeholder="Ex. : monmail@maboite.fr" class="form-control"  required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Sujet de votre message :</span>
+                        <input type="text" id="subject" name="subject" class="form-control" value="{{ formData.subject ?? '' }}" placeholder="Soyez précis" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Votre message :</span>
+                        <textarea name="message" rows="6" class="form-control" required>{{ formData.message ?? '' }}</textarea>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
+                    <button type="submit" class="btn btnBleu ">Envoyer</button>
+                </div>
+
+            {% endif %}
+        </div>
+    </form>
+</div>
+    {% if parametre.facebookURL!="" or parametre.youtubeURL!="" %}
+        <div class="text-center">
+            <p class="text-center fs-4 mt-4"><strong>Retrouvez-nous aussi sur les réseaux sociaux :</strong></p>
+            <div class="justify-content-center d-flex align-items-center">
+                {% if parametre.facebookURL!="" %}
+                    <div class="conteneur">
+                        <a class="fond-logo" href="{{ parametre.facebookURL }}" target="_blank">
+                            <img src="../../images/themes/facebook.webp" class="fond-logo" alt="Lien vers facebook">
+                        </a>
+                        <p class="infobulle ">{{ parametre.facebookURL }}</p>
+                    </div>
+                    {% if parametre.youtubeURL!="" %}
+                        <div class="ms-2 me-2"></div>
+                    {% endif %}
+                {% endif %}
+                {% if parametre.youtubeURL!="" %}
+                    <div class="conteneur">
+                        <a class="fond-logo" href="{{ parametre.youtubeURL }}" target="_blank">
+                            <img src="../../images/themes/youtube.png" class="fond-logo" alt="Lien vers youtube">
+                        </a>
+                        <p class="infobulle ">{{ parametre.youtubeURL }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/carte.js') }} " defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
